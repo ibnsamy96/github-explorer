@@ -3,13 +3,13 @@ class GithubAPI {
 }
 
 export class GithubReposSearch extends GithubAPI {
-  getReposSearchAPIUri(query: string) {
+  generateReposSearchAPIUri(query: string) {
     return this.apiHost + `/search/repositories?q=${query}`;
   }
 }
 
 export class GithubRepoRetrieving extends GithubAPI {
-  getRepoAPIUri(owner: string, repoName: string) {
+  generateRepoAPIUri(owner: string, repoName: string) {
     return this.apiHost + `/repos/${owner}/${repoName}`;
   }
 }
