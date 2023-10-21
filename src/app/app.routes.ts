@@ -4,11 +4,15 @@ import { RepoComponent } from './pages/repo/repo.component';
 
 export const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: SearchComponent,
   },
   {
-    path: '/repo/{id}',
+    path: 'repo/:id',
     component: RepoComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
