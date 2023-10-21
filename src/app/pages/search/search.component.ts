@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.searchQuery = params['q'];
       this.searchService.search(this.searchQuery).subscribe({
         next: (data) => {
-          console.log(data);
+          console.log(data.items[0].id);
         },
       });
     });
