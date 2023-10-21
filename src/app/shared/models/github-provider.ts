@@ -1,11 +1,20 @@
-export class GithubProvider {
+class GithubAPI {
   protected apiHost = 'https://api.github.com';
+}
 
-  getSearchAPI(query: string) {
+export class GithubReposSearch extends GithubAPI {
+  getReposSearchAPIUri(query: string) {
     return this.apiHost + `/search/repositories?q=${query}`;
   }
+}
 
-  getRepoAPI(owner: string, repoName: string) {
+export class GithubRepoRetrieving extends GithubAPI {
+  getRepoAPIUri(owner: string, repoName: string) {
     return this.apiHost + `/repos/${owner}/${repoName}`;
   }
 }
+
+export const GithubProvider = {
+  Search: GithubReposSearch,
+  Repo: GithubRepoRetrieving,
+};

@@ -4,7 +4,7 @@ import { GithubProvider } from '../../../shared/models/github-provider';
 @Injectable({
   providedIn: 'root',
 })
-export class SearchService extends GithubProvider {
+export class SearchService extends GithubProvider.Search {
   constructor() {
     super();
   }
