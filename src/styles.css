@@ -24,4 +24,11 @@
 
     @apply p-3;
   }
+
+  input,
+  input:focus,
+  input:focus-visible,
+  input:focus-within {
+    @apply outline-none;
+  }
 }
