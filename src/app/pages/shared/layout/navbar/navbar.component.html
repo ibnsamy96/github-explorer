@@ -1,15 +1,19 @@
-<nav class="flex justify-between items-center">
-  <h1 class="text-xl"><span class="font-bold">GitHub</span> Explorer</h1>
+<nav
+  class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0"
+>
+  <h1 class="text-xl text-center sm:text-left">
+    <span class="font-bold">GitHub</span> Explorer
+  </h1>
 
   <form
     (ngSubmit)="submitSearch(searchInput.value)"
-    class="flex grow justify-end gap-1"
+    class="flex sm:grow sm:justify-end gap-1"
   >
     <input
       #searchInput
       type="text"
       placeholder="search repos"
-      class="w-1/2 rounded-md px-2 py-1"
+      class="grow sm:grow-0 sm:w-3/4 md:w-1/2 rounded-md px-2 py-1"
     />
 
     <button type="submit" class="bg-gray-700 rounded-md px-2 py-1 text-white">
