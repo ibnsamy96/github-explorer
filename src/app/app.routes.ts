@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'repo/:id',
+    path: 'repos/:owner/:repoName',
     component: RepoComponent,
   },
   {
