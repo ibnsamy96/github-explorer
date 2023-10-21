@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './pages/shared/layout/navbar/navbar.component';
+import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 
 const components = [NavbarComponent];
 const modules = [CommonModule];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingService } from '../../../../shared/services/loading.service';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-navbar',
