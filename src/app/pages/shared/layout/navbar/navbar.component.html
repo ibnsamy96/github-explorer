@@ -15,9 +15,20 @@
       placeholder="search repos"
       class="grow sm:grow-0 sm:w-3/4 md:w-1/2 rounded-md px-2 py-1"
     />
-
-    <button type="submit" class="bg-gray-700 rounded-md px-2 py-1 text-white">
-      <i class="fa-solid fa-magnifying-glass fa-flip-horizontal"></i>
+    <button
+      [disabled]="isLoading"
+      type="submit"
+      class="bg-gray-700 disabled:opacity-50 rounded-md px-2 py-1 text-white"
+    >
+      <div [ngSwitch]="isLoading">
+        <i
+          [ngClass]="{
+            'fa-solid': true,
+            'fa-spinner fa-spin': isLoading,
+            'fa-magnifying-glass fa-flip-horizontal': !isLoading
+          }"
+        ></i>
+      </div>
     </button>
   </form>
 </nav>

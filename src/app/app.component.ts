@@ -13,6 +13,4 @@ const modules = [CommonModule];
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'github-explorer';
-}
+export class AppComponent {}
