@@ -6,10 +6,10 @@
         ><i class="fa-solid fa-link fa-xs opacity-10 group-hover:opacity-30"></i
       ></sup>
     </a>
-    <span class="text-xl font-normal" *ngIf="repo.language"
-      >(built with {{ repo.language | lowercase }})</span
-    >
   </h2>
+  <p class="text-xl font-normal" *ngIf="repo.language">
+    built with {{ repo.language | lowercase }}
+  </p>
 
   <hr class="my-4" />
 
