@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepoService } from './services/repo.service';
 import { Subscription } from 'rxjs';
+import { Repo } from './models/repo-profile.model';
 
 @Component({
   selector: 'app-repo',
@@ -11,12 +12,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './repo.component.html',
   styleUrls: ['./repo.component.css'],
 })
-export class RepoComponent implements OnInit, AfterViewInit {
-  owner!: string;
-  repoName!: string;
+export class RepoComponent implements OnInit {
   paramsSubscription!: Subscription;
 
-  test = false;
+  repo!: Repo;
+
+  isLoading = true;
 
   constructor(
     private router: Router,
@@ -32,18 +33,15 @@ export class RepoComponent implements OnInit, AfterViewInit {
         return;
       }
 
-      this.owner = params['owner'];
-      this.repoName = params['repoName'];
-      this.repoService.fetchRepo(this.owner, this.repoName).subscribe({
-        next: (data) => {
-          console.log(data);
-        },
-      });
+      this.repoService
+        .fetchRepo(params['owner'], params['repoName'])
+        .subscribe({
+          next: (repo) => {
+            this.isLoading = false;
+            this.repo = repo;
+          },
+        });
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.test = true;
   }
 
   ngOnDestroy(): void {
