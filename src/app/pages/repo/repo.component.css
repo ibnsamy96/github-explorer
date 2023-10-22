@@ -2,22 +2,24 @@
   display: contents;
 }
 
-#user-profile {
-  transition-property: width, min-width, max-width;
-  transition-duration: 500ms;
-  transition-delay: 1s;
-}
-
 @media (min-width: 768px) {
+  #user-profile {
+    transition-property: width, min-width, max-width, padding-right;
+    transition-duration: 500ms;
+    transition-delay: 1s;
+  }
+
   .width-full {
     width: 200px;
     min-width: 200px;
     max-width: 200px;
+    padding-right: 0.75rem;
   }
 
   .width-none {
     width: 0;
     min-width: 0;
     max-width: 0;
+    padding-right: 0;
   }
 }

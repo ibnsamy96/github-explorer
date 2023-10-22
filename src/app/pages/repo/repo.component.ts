@@ -6,34 +6,50 @@ import { Subscription } from 'rxjs';
 import { Repo } from './models/repo-profile.model';
 import { OwnerSidePanelComponent } from './components/owner-side-panel/owner-side-panel.component';
 import { RepoInfoComponent } from './components/repo-info/repo-info.component';
+import { LoadingService } from '../../shared/services/loading.service';
+import { LoaderComponent } from '../../shared/layout/navbar copy/loader.component';
 
 @Component({
   selector: 'app-repo',
   standalone: true,
   templateUrl: './repo.component.html',
   styleUrls: ['./repo.component.css'],
-  imports: [CommonModule, OwnerSidePanelComponent, RepoInfoComponent],
+  imports: [
+    CommonModule,
+    OwnerSidePanelComponent,
+    RepoInfoComponent,
+    LoaderComponent,
+  ],
 })
 export class RepoComponent implements OnInit {
+  isLoading?: boolean;
+
   paramsSubscription!: Subscription;
 
   repo!: Repo;
 
-  isLoading = true;
+  // isLoading = true;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private loadingService: LoadingService,
     private repoService: RepoService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.loadingService.isLoading.subscribe((val) => {
+      this.isLoading = val;
+    });
+
+    this.paramsSubscription = this.route.params.subscribe((params) => {
       // If no owner or repoName, then navigate to home
       if (!params['owner'] || !params['repoName']) {
         this.router.navigate(['/']);
         return;
       }
+
+      this.loadingService.show();
 
       this.repoService
         .fetchRepo(params['owner'], params['repoName'])
@@ -41,6 +57,7 @@ export class RepoComponent implements OnInit {
           next: (repo) => {
             this.isLoading = false;
             this.repo = repo;
+            this.loadingService.hide();
           },
         });
     });

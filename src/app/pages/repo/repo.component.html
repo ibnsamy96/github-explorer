@@ -2,15 +2,28 @@
   <div
     id="user-profile"
     [ngClass]="{ 'width-full': !isLoading, 'width-none': isLoading }"
-    class="bg-gray-200 md:pr-3 flex items-center md:block mx-auto my-1 sm:my-2 md:m-0 overflow-auto max-md:w-full max-md:min-w-full max-md:max-w-full"
+    class="bg-gray-200 flex items-center md:block mx-auto my-1 sm:my-2 md:m-0 overflow-auto max-md:w-full max-md:min-w-full max-md:max-w-full"
   >
-    <app-owner-side-panel [repo]="repo"></app-owner-side-panel>
+    <app-owner-side-panel
+      [repo]="repo"
+      *ngIf="!isLoading"
+    ></app-owner-side-panel>
   </div>
 
   <div
+    [ngClass]="{ 'justify-center items-center': isLoading }"
     id="repo-info"
     class="bg-white grow rounded-lg py-2 px-3 flex flex-col md:flex-row"
   >
-    <app-repo-info [repo]="repo"></app-repo-info>
+    <app-repo-info *ngIf="!isLoading" [repo]="repo"></app-repo-info>
+
+    <app-loader *ngIf="isLoading"></app-loader>
   </div>
+
+  <!-- <div
+    class="bg-white grow rounded-lg flex justify-center items-center"
+    *ngIf="isLoading"
+  >
+    <app-loader></app-loader>
+  </div> -->
 </div>
