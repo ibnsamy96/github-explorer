@@ -1,0 +1,71 @@
+<div class="w-2/3 pr-3">
+  <h2 class="text-4xl font-bold">
+    <a [href]="repo.url" class="group" target="_blank">
+      {{ repo.name }}
+      <sup
+        ><i class="fa-solid fa-link fa-xs opacity-10 group-hover:opacity-30"></i
+      ></sup>
+    </a>
+  </h2>
+
+  <hr class="my-4" />
+
+  <h3 class="text-xl font-medium">Description</h3>
+  <p class="text-lg">{{ repo.description }}</p>
+
+  <hr class="my-4" />
+
+  <h3 class="text-xl font-medium">Code</h3>
+
+  <p class="text-lg">Choose the action that suits you:</p>
+  <ul class="flex flex-col gap-1 mt-1">
+    <li class="pl-2">
+      <a
+        class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
+        [href]="repo.url"
+      >
+        <i class="fa-brands fa-github-alt fa-fw fa-lg"></i>
+      </a>
+      Check the repo to explore the code.
+    </li>
+
+    <li class="pl-2">
+      <a
+        class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
+        [href]="repo.devUrl"
+      >
+        <i class="fa-solid fa-code fa-fw fa-lg"></i>
+      </a>
+      Check github.dev to edit the code.
+    </li>
+
+    <li class="pl-2">
+      <button
+        id="cpy-btn"
+        [ngClass]="{ 'tooltip pointer-events-none': showCopiedTooltip }"
+        [cdkCopyToClipboard]="'git clone ' + repo.cloneUrl"
+        (cdkCopyToClipboardCopied)="onClipboardCopy()"
+        class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
+      >
+        <i class="fa-regular fa-clone fa-fw fa-lg"></i>
+      </button>
+      Copy the git command to clone the code.
+    </li>
+  </ul>
+</div>
+
+<div class="w-1/3 pl-3 border-l-2 border-gray-100">
+  <h3 class="text-xl">Topics</h3>
+  <ul *ngIf="repo.topics.length > 0" class="flex flex-wrap gap-1">
+    <li
+      class="p-2 rounded text-xs uppercase bg-gray-100"
+      *ngFor="let topic of repo.topics"
+    >
+      {{ topic }}
+    </li>
+  </ul>
+
+  <hr class="border-2 border-gray-100 my-4" />
+
+  <h3 class="text-xl">Statistics</h3>
+</div>
