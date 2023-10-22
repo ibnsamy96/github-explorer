@@ -2,18 +2,20 @@
   [routerLink]="['/repos', repo.owner.name, repo.repoName]"
   class="w-96 border cursor-pointer border-gray-300 hover:border-gray-500 p-2 rounded-lg"
 >
-  <div class="flex">
-    <div class="repo-info w-4/5 flex flex-col">
-      <h3 class="text-xl">
-        <span class="font-thin">{{ repo.owner.name }}/</span
-        ><span class="font-medium">{{ repo.repoName }}</span>
-      </h3>
-      <p class="text-sm mb-2 opacity-50">
-        {{ repo.description | slice : 0 : 30 }}
-        <ng-container *ngIf="repo.description && repo.description.length > 30"
-          >...</ng-container
-        >
-      </p>
+  <div class="flex h-full">
+    <div class="repo-info w-4/5 flex flex-col justify-between">
+      <div>
+        <h3 class="text-xl">
+          <span class="font-thin">{{ repo.owner.name }}/</span
+          ><span class="font-medium">{{ repo.repoName }}</span>
+        </h3>
+        <p class="text-sm mb-2 opacity-50">
+          {{ repo.description | slice : 0 : 30 }}
+          <ng-container *ngIf="repo.description && repo.description.length > 30"
+            >...</ng-container
+          >
+        </p>
+      </div>
       <div class="flex justify-between pr-2">
         <div>
           <i class="fa-regular fa-star"></i>
