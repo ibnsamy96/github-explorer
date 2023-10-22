@@ -33,26 +33,33 @@
       <ul class="flex flex-col gap-1 mt-1">
         <li class="pl-2">
           <a
-            class="py-1 px-2 bg-slate-200 hover:bg-slate-300 rounded inline-block"
+            class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
             [href]="repo.url"
-            >Check the repo to explore the code</a
           >
+            <i class="fa-brands fa-github-alt fa-fw fa-lg"></i>
+          </a>
+          Check the repo to explore the code.
         </li>
 
         <li class="pl-2">
           <a
-            class="py-1 px-2 bg-slate-200 hover:bg-slate-300 rounded inline-block"
+            class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
             [href]="repo.devUrl"
-            >Check github.dev to edit the code</a
           >
+            <i class="fa-solid fa-code fa-fw fa-lg"></i>
+          </a>
+          Check github.dev to edit the code.
         </li>
 
         <li class="pl-2">
           <button
-            class="py-1 px-2 bg-slate-200 hover:bg-slate-300 rounded inline-block"
+            [cdkCopyToClipboard]="'git clone ' + repo.cloneUrl"
+            (cdkCopyToClipboardCopied)="onClipboardCopy()"
+            class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
           >
-            Copy the git command to clone the code
+            <i class="fa-regular fa-clone fa-fw fa-lg"></i>
           </button>
+          Copy the git command to clone the code.
         </li>
       </ul>
     </div>

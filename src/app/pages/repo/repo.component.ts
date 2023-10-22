@@ -5,13 +5,14 @@ import { RepoService } from './services/repo.service';
 import { Subscription } from 'rxjs';
 import { Repo } from './models/repo-profile.model';
 import { OwnerSidePanelComponent } from './components/owner-side-panel/owner-side-panel.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-repo',
   standalone: true,
   templateUrl: './repo.component.html',
   styleUrls: ['./repo.component.css'],
-  imports: [CommonModule, OwnerSidePanelComponent],
+  imports: [CommonModule, ClipboardModule, OwnerSidePanelComponent],
 })
 export class RepoComponent implements OnInit {
   paramsSubscription!: Subscription;
@@ -47,5 +48,9 @@ export class RepoComponent implements OnInit {
 
   ngOnDestroy(): void {
     if (this.paramsSubscription) this.paramsSubscription.unsubscribe();
+  }
+
+  onClipboardCopy() {
+    console.log('codeCopied');
   }
 }
