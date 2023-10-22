@@ -5,6 +5,7 @@ export interface Repo {
   language: string | undefined;
   url: string;
   cloneUrl: string;
+  devUrl: string;
   topics: string[];
   size: number;
   forks: number;

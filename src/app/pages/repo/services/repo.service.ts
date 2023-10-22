@@ -36,6 +36,7 @@ export class RepoService extends GithubProvider.Repo {
       },
       url: response.html_url,
       cloneUrl: response.clone_url,
+      devUrl: '',
       name: response.name,
       description: response.description,
       language: response.language,
@@ -46,6 +47,7 @@ export class RepoService extends GithubProvider.Repo {
       topics: response.topics,
     };
 
+    repo.devUrl = `https://github.dev/${repo.owner.name}/${repo.name}`;
     repo.owner.externalLinks.profile = `https://github.com/${repo.owner.name}`;
     repo.owner.externalLinks.gists = `https://gist.github.com/${repo.owner.name}`;
     repo.owner.externalLinks.repos = `${repo.owner.externalLinks.profile}?tab=repositories`;
