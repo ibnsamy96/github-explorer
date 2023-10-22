@@ -1,0 +1,17 @@
+:host {
+  display: contents;
+}
+
+#user-profile {
+  transition-property: width;
+  transition-duration: 500ms;
+  transition-delay: 1s;
+}
+
+.width-full {
+  width: 200px;
+}
+
+.width-none {
+  width: 0;
+}

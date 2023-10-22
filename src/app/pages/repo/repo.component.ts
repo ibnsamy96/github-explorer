@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepoService } from './services/repo.service';
@@ -11,10 +11,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './repo.component.html',
   styleUrls: ['./repo.component.css'],
 })
-export class RepoComponent implements OnInit {
+export class RepoComponent implements OnInit, AfterViewInit {
   owner!: string;
   repoName!: string;
   paramsSubscription!: Subscription;
+
+  test = false;
 
   constructor(
     private router: Router,
@@ -38,6 +40,10 @@ export class RepoComponent implements OnInit {
         },
       });
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.test = true;
   }
 
   ngOnDestroy(): void {

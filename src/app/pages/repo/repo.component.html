@@ -1,1 +1,12 @@
-<p>repo works!</p>
+<div class="page-container grow flex">
+  <div
+    [ngClass]="{ 'width-full': test, 'width-none': !test }"
+    id="user-profile"
+    class="bg-gray-200"
+  ></div>
+  <div (click)="test = !test" id="repo-info" class="bg-white grow rounded-lg">
+    {{ test }}
+  </div>
+</div>
+
+<!-- py-2 px-3  -->
