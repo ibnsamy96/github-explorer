@@ -13,6 +13,6 @@ export class RepoService extends GithubProvider.Repo {
 
   fetchRepo(owner: string, repoName: string) {
     const requestUrl = this.generateRepoAPIUri(owner, repoName);
-    return this.http.get<RepoResponse>(requestUrl);
+    return this.http.get<RepoResponse>(requestUrl, { observe: 'response' });
   }
 }
