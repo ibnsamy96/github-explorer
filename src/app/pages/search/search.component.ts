@@ -5,6 +5,7 @@ import { SearchService } from './services/search.service';
 import { Subscription } from 'rxjs';
 import { RepoCardComponent } from './components/repo-card/repo-card.component';
 import { ReposList, Repo } from './models/repos-list.model';
+import { LoadingService } from '../../shared/services/loading.service';
 
 @Component({
   selector: 'app-search',
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private loadingService: LoadingService,
     private searchService: SearchService
   ) {}
 
@@ -46,6 +48,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     ) {
       if (this.totalResults && this.totalResults > this.searchResults.length) {
         this.fetchingPagesCounter++;
+        this.loadingService.show();
 
         this.searchService
           .search(this.searchQuery, this.fetchedPagesCounter + 1)
@@ -54,6 +57,8 @@ export class SearchComponent implements OnInit, OnDestroy {
               this.fetchedPagesCounter++;
 
               this.searchResults.push(...data.repos);
+
+              this.loadingService.hide();
             },
           });
       }
@@ -77,6 +82,8 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.fetchedPagesCounter++;
             this.totalResults = data.totalResults;
             this.searchResults = data.repos;
+
+            this.loadingService.hide();
           },
         });
     });
