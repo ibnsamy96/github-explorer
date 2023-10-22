@@ -5,9 +5,9 @@
   <div class="flex h-full">
     <div class="repo-info w-4/5 flex flex-col justify-between">
       <div>
-        <h3 class="text-xl">
-          <span class="font-thin">{{ repo.owner.name }}/</span
-          ><span class="font-medium">{{ repo.name }}</span>
+        <h3 class="text-xl break-all">
+          <span class="font-thin break-all">{{ repo.owner.name }}/</span
+          ><span class="font-medium break-all">{{ repo.name }}</span>
         </h3>
         <p class="text-sm mb-2 opacity-50">
           {{ repo.description | slice : 0 : 30 }}
@@ -19,19 +19,19 @@
       <div class="pr-2 flex justify-between">
         <div>
           <i class="fa-regular fa-star"></i>
-          {{ repo.stars }}
+          <p>{{ repo.stars }}</p>
         </div>
         <div>
           <i class="fa-solid fa-exclamation"></i>
-          {{ repo.issues }}
+          <p>{{ repo.issues }}</p>
         </div>
         <div>
           <i class="fa-solid fa-code-fork"></i>
-          {{ repo.forks }}
+          <p>{{ repo.forks }}</p>
         </div>
         <div>
           <i class="fa-solid fa-code"></i>
-          {{ repo.language || "Unknown" | titlecase }}
+          <p>{{ repo.language || "Unknown" | titlecase }}</p>
         </div>
       </div>
     </div>

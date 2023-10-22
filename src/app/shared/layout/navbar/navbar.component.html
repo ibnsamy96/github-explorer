@@ -15,11 +15,13 @@
   >
     <input
       #searchInput
-      type="text"
+      id="search-query"
+      name="q"
+      type="search"
       placeholder="search repos"
       class="grow sm:grow-0 sm:w-3/4 md:w-1/2 rounded-md px-2 py-1"
     />
-    <button
+    <button 
       [disabled]="isLoading"
       type="submit"
       class="bg-gray-700 disabled:opacity-50 rounded-md px-2 py-1 text-white"
