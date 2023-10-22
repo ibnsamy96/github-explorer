@@ -3,7 +3,7 @@
 }
 
 #user-profile {
-  transition-property: width;
+  transition-property: width, min-width, max-width;
   transition-duration: 500ms;
   transition-delay: 1s;
 }
