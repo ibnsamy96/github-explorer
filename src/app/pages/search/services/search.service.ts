@@ -13,8 +13,8 @@ export class SearchService extends GithubProvider.Search {
     super();
   }
 
-  search(query: string) {
-    const requestUrl = this.generateReposSearchAPIUri(query);
+  search(query: string, page: number) {
+    const requestUrl = this.generateReposSearchAPIUri(query, page);
     return this.http
       .get<SearchResponse>(requestUrl)
       .pipe(map(this.extractReposInfo));

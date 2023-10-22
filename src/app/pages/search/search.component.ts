@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './services/search.service';
@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchQuery!: string;
   fetchedPagesCounter = 0;
+  fetchingPagesCounter = 0;
 
   totalResults!: number;
   searchResults!: ReposList;
@@ -28,6 +29,37 @@ export class SearchComponent implements OnInit, OnDestroy {
     private searchService: SearchService
   ) {}
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    // to fetch the new page earlier, the app starts fetching it {100} pixels before the page end
+    const negatablePixels = 100;
+
+    const windowScroll =
+      Math.ceil(window.innerHeight) +
+      Math.ceil(window.scrollY) +
+      negatablePixels;
+    const pageHeight = document.body.scrollHeight;
+
+    if (
+      windowScroll >= pageHeight &&
+      this.fetchingPagesCounter == this.fetchedPagesCounter
+    ) {
+      if (this.totalResults && this.totalResults > this.searchResults.length) {
+        this.fetchingPagesCounter++;
+
+        this.searchService
+          .search(this.searchQuery, this.fetchedPagesCounter + 1)
+          .subscribe({
+            next: (data) => {
+              this.fetchedPagesCounter++;
+
+              this.searchResults.push(...data.repos);
+            },
+          });
+      }
+    }
+  }
+
   ngOnInit(): void {
     const paramsSubscription = this.route.queryParams.subscribe((params) => {
       // If no query param is passed, then navigate to home and unsubscribe
@@ -36,14 +68,17 @@ export class SearchComponent implements OnInit, OnDestroy {
         return;
       }
 
+      this.fetchingPagesCounter++;
       this.searchQuery = params['q'];
-      this.searchService.search(params['q']).subscribe({
-        next: (data) => {
-          this.fetchedPagesCounter++;
-          this.totalResults = data.totalResults;
-          this.searchResults = data.repos;
-        },
-      });
+      this.searchService
+        .search(params['q'], this.fetchedPagesCounter + 1)
+        .subscribe({
+          next: (data) => {
+            this.fetchedPagesCounter++;
+            this.totalResults = data.totalResults;
+            this.searchResults = data.repos;
+          },
+        });
     });
   }
 
