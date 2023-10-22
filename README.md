@@ -1,6 +1,6 @@
 # Github Explorer
 
-This Angular application allows users to search for Github repositories and display information about them.
+An Angular application that allows users to search for GitHub repositories and display information about them. It's a part of my assessment test for [Badgewell](https://www.badgewell.com/).
 
 
 ## Getting Started
