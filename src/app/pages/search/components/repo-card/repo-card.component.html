@@ -1,6 +1,6 @@
 <div
   [routerLink]="['/repos', repo.owner.name, repo.repoName]"
-  class="w-96 border cursor-pointer border-gray-300 hover:border-gray-500 p-2 rounded-lg"
+  class="w-[24.5rem] border cursor-pointer border-gray-300 hover:border-gray-500 p-2 rounded-lg"
 >
   <div class="flex h-full">
     <div class="repo-info w-4/5 flex flex-col justify-between">
@@ -16,7 +16,7 @@
           >
         </p>
       </div>
-      <div class="flex justify-between pr-2">
+      <div class="pr-2 flex justify-between">
         <div>
           <i class="fa-regular fa-star"></i>
           {{ repo.stars }}
@@ -31,7 +31,7 @@
         </div>
         <div>
           <i class="fa-solid fa-code"></i>
-          {{ repo.language | titlecase }}
+          {{ repo.language || "Unknown" | titlecase }}
         </div>
       </div>
     </div>
