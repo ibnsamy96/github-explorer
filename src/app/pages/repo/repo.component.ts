@@ -18,6 +18,7 @@ export class RepoComponent implements OnInit {
   paramsSubscription!: Subscription;
 
   repo!: Repo;
+  showCopiedTooltip = false;
 
   isLoading = true;
 
@@ -51,6 +52,10 @@ export class RepoComponent implements OnInit {
   }
 
   onClipboardCopy() {
-    console.log('codeCopied');
+    this.showCopiedTooltip = true;
+    setTimeout(() => {
+      this.showCopiedTooltip = false;
+    }, 5500);
+    // console.log('codeCopied');
   }
 }

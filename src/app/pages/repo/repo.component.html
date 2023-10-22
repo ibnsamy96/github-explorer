@@ -53,6 +53,8 @@
 
         <li class="pl-2">
           <button
+            id="cpy-btn"
+            [ngClass]="{ 'tooltip pointer-events-none': showCopiedTooltip }"
             [cdkCopyToClipboard]="'git clone ' + repo.cloneUrl"
             (cdkCopyToClipboardCopied)="onClipboardCopy()"
             class="py-1 px-2 bg-gray-300 hover:bg-slate-400 text-gray-600 hover:text-white rounded inline-block"
