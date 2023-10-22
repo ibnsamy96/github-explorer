@@ -4,13 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RepoService } from './services/repo.service';
 import { Subscription } from 'rxjs';
 import { Repo } from './models/repo-profile.model';
+import { OwnerSidePanelComponent } from './components/owner-side-panel/owner-side-panel.component';
 
 @Component({
   selector: 'app-repo',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './repo.component.html',
   styleUrls: ['./repo.component.css'],
+  imports: [CommonModule, OwnerSidePanelComponent],
 })
 export class RepoComponent implements OnInit {
   paramsSubscription!: Subscription;
