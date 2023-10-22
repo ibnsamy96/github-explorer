@@ -1,0 +1,39 @@
+<div
+  [routerLink]="['/repos']"
+  class="w-1/3 border cursor-pointer border-gray-300 hover:border-gray-500 p-2 rounded-lg"
+>
+  <div class="flex">
+    <div class="repo-info w-4/5 flex flex-col">
+      <h3 class="text-xl">
+        <span class="font-thin">{{ repo.owner.name }}/</span
+        ><span class="font-medium">{{ repo.repoName }}</span>
+      </h3>
+      <p class="text-sm mb-2 opacity-50">{{ repo.description }}</p>
+      <div class="flex justify-between pr-2">
+        <div>
+          <i class="fa-regular fa-star"></i>
+          {{ repo.stars }}
+        </div>
+        <div>
+          <i class="fa-solid fa-exclamation"></i>
+          {{ repo.issues }}
+        </div>
+        <div>
+          <i class="fa-solid fa-code-fork"></i>
+          {{ repo.forks }}
+        </div>
+        <div>
+          <i class="fa-solid fa-code"></i>
+          {{ repo.language | titlecase }}
+        </div>
+      </div>
+    </div>
+    <div class="user-info-avatar w-1/5">
+      <img
+        class="w-11/12 max-w-[75px] rounded-lg aspect-square block ml-auto"
+        [src]="repo.owner.avatarUrl"
+        [alt]="repo.owner.name + '/' + repo.repoName"
+      />
+    </div>
+  </div>
+</div>

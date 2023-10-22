@@ -7,8 +7,8 @@ export interface Repo {
   };
   repoName: string;
   description: string | undefined;
+  language: string | undefined;
   forks: number;
   stars: number;
   issues: number;
-  language: string | undefined;
 }

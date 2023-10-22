@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './services/search.service';
 import { Subscription } from 'rxjs';
-import { SearchResponse } from './models/search-response.model';
+import { RepoCardComponent } from './components/repo-card/repo-card.component';
 import { ReposList, Repo } from './models/repos-list.model';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RepoCardComponent],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
