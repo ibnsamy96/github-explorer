@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router,RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
@@ -23,8 +23,6 @@ export class NavbarComponent implements OnInit {
   }
 
   submitSearch(query: string) {
-    this.loadingService.show();
-
     query = query.trim();
     if (query)
       this.router.navigate(['/search'], {
