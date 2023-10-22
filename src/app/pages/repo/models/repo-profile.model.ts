@@ -1,6 +1,6 @@
 export interface Repo {
   owner: Owner;
-  repoName: string;
+  name: string;
   description: string | undefined;
   language: string | undefined;
   url: string;

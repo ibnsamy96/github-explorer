@@ -30,7 +30,7 @@ export class SearchService extends GithubProvider.Search {
           name: item.owner.login,
           avatarUrl: item.owner.avatar_url,
         },
-        repoName: item.name,
+        name: item.name,
         description: item.description,
         language: item.language,
         stars: item.stargazers_count,

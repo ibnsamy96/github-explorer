@@ -5,7 +5,7 @@ export interface Repo {
     name: string;
     avatarUrl: string;
   };
-  repoName: string;
+  name: string;
   description: string | undefined;
   language: string | undefined;
   forks: number;

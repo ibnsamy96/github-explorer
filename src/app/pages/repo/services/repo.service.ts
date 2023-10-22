@@ -36,7 +36,7 @@ export class RepoService extends GithubProvider.Repo {
       },
       url: response.html_url,
       cloneUrl: response.clone_url,
-      repoName: response.name,
+      name: response.name,
       description: response.description,
       language: response.language,
       stars: response.stargazers_count,

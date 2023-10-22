@@ -1,5 +1,5 @@
 <div
-  [routerLink]="['/repos', repo.owner.name, repo.repoName]"
+  [routerLink]="['/repos', repo.owner.name, repo.name]"
   class="w-[24.5rem] border cursor-pointer border-gray-300 hover:border-gray-500 p-2 rounded-lg"
 >
   <div class="flex h-full">
@@ -7,7 +7,7 @@
       <div>
         <h3 class="text-xl">
           <span class="font-thin">{{ repo.owner.name }}/</span
-          ><span class="font-medium">{{ repo.repoName }}</span>
+          ><span class="font-medium">{{ repo.name }}</span>
         </h3>
         <p class="text-sm mb-2 opacity-50">
           {{ repo.description | slice : 0 : 30 }}
@@ -39,7 +39,7 @@
       <img
         class="w-11/12 max-w-[75px] rounded-lg aspect-square block ml-auto"
         [src]="repo.owner.avatarUrl"
-        [alt]="repo.owner.name + '/' + repo.repoName"
+        [alt]="repo.owner.name + '/' + repo.name"
       />
     </div>
   </div>
