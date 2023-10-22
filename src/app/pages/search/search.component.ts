@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './services/search.service';
 import { Subscription } from 'rxjs';
+import { SearchResponse } from './models/search-response.model';
+import { ReposList, Repo } from './models/repos-list.model';
 
 @Component({
   selector: 'app-search',
@@ -12,8 +14,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  searchQuery!: string;
   paramsSubscription!: Subscription;
+
+  searchQuery!: string;
+  fetchedPagesCounter = 0;
+
+  totalResults!: number;
+  searchResults!: ReposList;
 
   constructor(
     private router: Router,
@@ -30,9 +37,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       }
 
       this.searchQuery = params['q'];
-      this.searchService.search(this.searchQuery).subscribe({
+      this.searchService.search(params['q']).subscribe({
         next: (data) => {
-          console.log(data.items[0].id);
+          this.fetchedPagesCounter++;
+          this.totalResults = data.totalResults;
+          this.searchResults = data.repos;
         },
       });
     });
