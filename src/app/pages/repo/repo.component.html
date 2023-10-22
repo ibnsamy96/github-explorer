@@ -1,8 +1,8 @@
-<div class="page-container grow flex">
+<div class="page-container grow flex flex-col md:flex-row">
   <div
-    [ngClass]="{ 'width-full': !isLoading, 'width-none': isLoading }"
     id="user-profile"
-    class="bg-gray-200 pr-3"
+    [ngClass]="{ 'width-full': !isLoading, 'width-none': isLoading }"
+    class="bg-gray-200 md:pr-3 flex items-center md:block mx-auto my-1 sm:my-2 md:m-0 overflow-auto max-md:w-full max-md:min-w-full max-md:max-w-full"
   >
     <app-owner-side-panel [repo]="repo"></app-owner-side-panel>
   </div>
