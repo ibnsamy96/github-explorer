@@ -36,7 +36,7 @@ export class RepoComponent implements OnInit, AfterViewInit {
       this.repoName = params['repoName'];
       this.repoService.fetchRepo(this.owner, this.repoName).subscribe({
         next: (data) => {
-          console.log(data.headers.keys());
+          console.log(data);
         },
       });
     });
