@@ -1,7 +1,11 @@
 <nav
   class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0"
 >
-  <h1 class="text-xl text-center sm:text-left">
+  <h1
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+    class="text-xl text-center sm:text-left cursor-pointer"
+  >
     <span class="font-bold">GitHub</span> Explorer
   </h1>
 
